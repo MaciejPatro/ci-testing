@@ -17,9 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/conan-cache
-      - name: Build and test
-        uses: docker://{{ matrix.image }}
-        run: |
+      - uses: docker://{{ matrix.image }}
+      - run: |
           cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja
           cmake --build release
           ctest --test-dir release -VV
