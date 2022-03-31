@@ -8,10 +8,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: 
-          - ubuntu-latest
-          - windows-latest
-          - macOS-latest
+        image:
+          - ubuntu-20.04-clang-14
+          - ubuntu-20.04-clang-13
+          - ubuntu-20.04-clang-12
+          - ubuntu-20.04-gcc-11
+          - ubuntu-20.04-gcc-10
+          - ubuntu-20.04-gcc-9
     steps:
       - uses: actions/checkout@v2
       - run: |
