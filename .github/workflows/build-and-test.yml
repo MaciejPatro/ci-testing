@@ -6,6 +6,7 @@ jobs:
   test:
     strategy:
       fail-fast: false
+      runs-on: ubuntu-latest
       matrix:
         image:
           - ubuntu-20.04-clang-14
