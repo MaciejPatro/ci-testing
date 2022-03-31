@@ -3,22 +3,22 @@ name: build-and-test
 on: [push, pull_request]
 
 jobs:
-  build_and_test:
+  test:
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        configuration:
+        image:
           - ubuntu-20.04-clang-14
           - ubuntu-20.04-clang-13
           - ubuntu-20.04-clang-12
           - ubuntu-20.04-gcc-11
           - ubuntu-20.04-gcc-10
           - ubuntu-20.04-gcc-9
-    runs-on: ubuntu-latest
     steps:
+      - uses: docker://${{ matrix.image }}
       - uses: actions/checkout@v2
       - uses: ./.github/actions/conan-cache
-      - uses: docker://${{ matrix.configuration }}
       - run: |
           cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja
           cmake --build release
