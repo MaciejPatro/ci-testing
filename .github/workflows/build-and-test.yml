@@ -3,11 +3,11 @@ name: build-and-test
 on: [push, pull_request]
 
 jobs:
-  test:
+  build_and_test:
     strategy:
       fail-fast: false
       matrix:
-        image:
+        configuration:
           - ubuntu-20.04-clang-14
           - ubuntu-20.04-clang-13
           - ubuntu-20.04-clang-12
@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/conan-cache
-      - uses: docker://${{ matrix.image }}
+      - uses: docker://${{ matrix.configuration }}
       - run: |
           cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja
           cmake --build release
