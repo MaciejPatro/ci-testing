@@ -1,0 +1,29 @@
+name: build-and-test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - ubuntu-20.04-clang-14
+          - ubuntu-20.04-clang-13
+          - ubuntu-20.04-clang-12
+          - ubuntu-20.04-gcc-11
+          - ubuntu-20.04-gcc-10
+          - ubuntu-20.04-gcc-9
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/conan-cache
+      - name: Build and test
+        uses: docker://{{ matrix.image }}
+        run: |
+          cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake --build release
+          ctest --test-dir release -VV
+      - uses: mikepenz/action-junit-report@v3
+        if: always()
+        with:
+          report_paths: './release/*_tests.xml'

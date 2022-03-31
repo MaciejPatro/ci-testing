@@ -1,0 +1,17 @@
+name: code-coverage
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/conan-cache
+      - name: Build and test
+        uses: docker://maciejpatro/ubuntu-20.04-clang-13-with-tools
+        run: |
+          cmake -B coverage -G Ninja -DCMAKE_BUILD_TYPE=Debug -DWITH_COVERAGE=ON
+          cmake --build coverage
+          ctest --test-dir coverage -VV
+          gcovr --xml-pretty --delete --print-summary --root ${GITHUB_WORKSPACE} \
+              --xml coverage.xml --gcov-executable 'llvm-cov gcov'
