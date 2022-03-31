@@ -17,5 +17,14 @@ jobs:
 #           - ubuntu-20.04-gcc-9
     container: maciejpatro/${{ matrix.image }}
     steps:
-      - run: |
-          echo "WOWOWOW ${{ matrix.image }}" 
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/conan-cache
+      - name: Build and test
+        run: |
+          cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake --build release
+          ctest --test-dir release -VV
+      - uses: mikepenz/action-junit-report@v3
+        if: always()
+        with:
+          report_paths: './release/*_tests.xml'
