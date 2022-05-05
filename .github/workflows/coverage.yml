@@ -2,6 +2,10 @@ name: code-coverage
 
 on: [push, pull_request]
 
+env:
+  CONAN_SYSREQUIRES_MODE: enabled
+  CONAN_USER_HOME: "${{ github.workspace }}/conan-cache"
+  
 jobs:
   test:
     runs-on: ubuntu-latest
