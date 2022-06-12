@@ -1,18 +1,16 @@
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) 2022 Maciej Patro.
-// Distributed under the Mozilla Public License 2.0
+// Distributed under the Boost Software License 1.0
 // for more information read LICENSE file.
 /////////////////////////////////////////////////////////////////////
 
-#ifndef CI_TESTING_CI_TESTING_HPP
-#define CI_TESTING_CI_TESTING_HPP
+#include <my_proj/my_proj.hpp>
 
-namespace ci_testing {
+namespace my_proj {
+
 bool tested_function()
 {
   return true;
 }
 
-} // namespace ci_testing
-
-#endif // CI_TESTING_CI_TESTING_HPP
+} // namespace my_proj

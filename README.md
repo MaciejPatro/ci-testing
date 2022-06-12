@@ -1,8 +1,8 @@
-# ci-testing
+# My Proj
 
 Copyright &copy; 2022 Maciej Patro
 
-[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
+[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)
 
 ## Introduction
 
