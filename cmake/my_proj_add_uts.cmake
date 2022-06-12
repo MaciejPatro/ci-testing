@@ -12,17 +12,13 @@ function (my_proj_add_uts TARGET)
                 NAME ${PROJECT_NAME}_uts
                 COMMAND
                     valgrind --tool=memcheck --leak-check=yes
-                    $<TARGET_FILE:${TARGET}_tests>
-                    $<$<BOOL:$ENV{CI}>:-r=junit>
-                    $<$<BOOL:$ENV{CI}>:-o=${CMAKE_BINARY_DIR}/${TARGET}_tests.xml>
+                    $<TARGET_FILE:${TARGET}_tests>$<$<BOOL:$ENV{CI}>:--gtest_output=xml:${CMAKE_BINARY_DIR}/${TARGET}_tests.xml>
             )
         else()
             add_test(
                 NAME ${TARGET}_uts
                 COMMAND
-                    $<TARGET_FILE:${TARGET}_tests>
-                    $<$<BOOL:$ENV{CI}>:-r=junit>
-                    $<$<BOOL:$ENV{CI}>:-o=${CMAKE_BINARY_DIR}/${TARGET}_tests.xml>
+                    $<TARGET_FILE:${TARGET}_tests>$<$<BOOL:$ENV{CI}>:--gtest_output=xml:${CMAKE_BINARY_DIR}/${TARGET}_tests.xml>
             )
         endif()
     endif()

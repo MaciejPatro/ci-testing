@@ -12,7 +12,7 @@ target_sources(${PROJECT_NAME}
 )
 
 if(BUILD_TESTING)
-    find_package(doctest REQUIRED)
+    find_package(GTest REQUIRED)
 
     add_executable(${PROJECT_NAME}_tests)
     target_sources(${PROJECT_NAME}_tests
@@ -22,7 +22,7 @@ if(BUILD_TESTING)
     target_link_libraries(${PROJECT_NAME}_tests
         PRIVATE
             ${PROJECT_NAME}
-            doctest::doctest
+            GTest::GTest
             my_proj::settings
     )
     my_proj_add_uts(${PROJECT_NAME})
