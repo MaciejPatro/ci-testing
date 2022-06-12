@@ -4,14 +4,16 @@
 // for more information read LICENSE file.
 /////////////////////////////////////////////////////////////////////
 
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+
 #include <my_proj/my_proj.hpp>
-#include <gtest/gtest.h>
+#include <doctest/doctest.h>
 
 namespace my_proj {
 
-TEST(MyProj, PassingTestCase)
+TEST_CASE("Passing test case")
 {
-  EXPECT_TRUE(tested_function());
+  REQUIRE(tested_function());
 }
 
 } // namespace my_proj
