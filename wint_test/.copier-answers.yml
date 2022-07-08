@@ -1,6 +1,6 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v0.2.0
-_src_path: git@github.com:MaciejPatro/copier-cpp-cmake.git
+_commit: v0.2.0-2-g97d480c
+_src_path: copier-cpp-cmake
 ci_system: 3.17
 cmake_min_version: 3.17
 code_coverage: false
@@ -14,8 +14,8 @@ project_setup: basic
 project_slug: my_proj
 project_type: header-only library
 sanitize: false
-unit_testing_11: null
-unit_testing_14: null
-unit_testing_17: null
-unit_testing_98: null
+unit_testing_11: doctest
+unit_testing_14: doctest
+unit_testing_17: doctest
+unit_testing_98: GTest
 
