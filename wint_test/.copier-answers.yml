@@ -1,0 +1,21 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v0.2.0
+_src_path: git@github.com:MaciejPatro/copier-cpp-cmake.git
+ci_system: 3.17
+cmake_min_version: 3.17
+code_coverage: false
+cpp_standard: 17
+include_what_you_use: false
+license: MIT License
+license_owner: Maciej Patro
+project_name: My Proj
+project_namespace: my_proj
+project_setup: basic
+project_slug: my_proj
+project_type: header-only library
+sanitize: false
+unit_testing_11: null
+unit_testing_14: null
+unit_testing_17: null
+unit_testing_98: null
+
