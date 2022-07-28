@@ -5,7 +5,7 @@ ci_system: Github
 cmake_min_version: '3.17'
 code_coverage: false
 cpp_standard: 17
-dependencies: conan
+dependencies: vcpkg
 include_what_you_use: false
 license: MIT License
 license_owner: Maciej Patro

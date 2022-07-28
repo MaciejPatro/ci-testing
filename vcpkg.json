@@ -1,0 +1,11 @@
+{
+    "name": "my-project",
+    "version-string": "latest",
+    "dependencies": [
+        "doctest"
+    ],
+    "builtin-baseline": "f93ba152d55e1d243160e690bc302ffe8638358e",
+    "overrides": [
+        { "name": "doctest", "version": "2.4.9" }
+    ]
+}
