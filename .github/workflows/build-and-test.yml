@@ -26,6 +26,7 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/vcpkg
       - name: Build and test
+        shell: bash
         run: |
           cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja -DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake
           cmake --build release
