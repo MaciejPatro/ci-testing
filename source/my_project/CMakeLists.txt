@@ -1,13 +1,15 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.23)
 
 add_library(${PROJECT_NAME})
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_sources(${PROJECT_NAME}
-    PUBLIC
-        include/my_project/my_project.hpp
     PRIVATE
         src/my_project.cpp
+    PRIVATE
+        FILE_SET HEADERS
+        FILES
+            include/my_project/my_project.hpp
 )
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
@@ -20,6 +22,8 @@ target_link_libraries(${PROJECT_NAME}_main
         ${PROJECT_NAME}
         my_project::settings
 )
+
+install(TARGETS ${PROJECT_NAME})
 
 if(BUILD_TESTING)
     find_package(doctest REQUIRED)

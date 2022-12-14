@@ -3,7 +3,8 @@ name: build-and-test
 on: [ push, pull_request ]
 
 env:
-  VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg_cache
+  CONAN_SYSREQUIRES_MODE: enabled
+  CONAN_USER_HOME: ${{ github.workspace }}/conan-cache
 
 jobs:
   test:
@@ -15,6 +16,7 @@ jobs:
           - ubuntu-20.04-clang-14
           - ubuntu-20.04-clang-13
           - ubuntu-20.04-clang-12
+          - ubuntu-22.04-gcc-12
           - ubuntu-20.04-gcc-11
           - ubuntu-20.04-gcc-10
           - ubuntu-20.04-gcc-9
@@ -23,12 +25,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-          fetch-depth: 0
-      - uses: ./.github/actions/vcpkg
+      - uses: ./.github/actions/conan
       - name: Build and test
-        shell: bash
         run: |
-          cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja -DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake -B release -DCMAKE_BUILD_TYPE=Release -G Ninja
           cmake --build release
           ctest --test-dir release -VV
       - uses: mikepenz/action-junit-report@v3
