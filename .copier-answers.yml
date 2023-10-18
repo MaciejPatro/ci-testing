@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v0.3.0-1-g51ec88d
+_commit: v0.3.0-1-g09d86e1
 _src_path: ../copier-cpp-cmake
 ci_system: Github
 cmake_min_version: '3.23'
