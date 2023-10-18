@@ -1,11 +1,11 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v0.2.0-23-g26acb24
-_src_path: copier-cpp-cmake
+_commit: v0.3.0-1-g3f74b13
+_src_path: ../copier-cpp-cmake
 ci_system: Github
 cmake_min_version: '3.23'
 code_coverage: false
 cpp_standard: 17
-dependencies: conan
+dependencies: conan-1.x
 include_what_you_use: false
 license: MIT License
 license_owner: Maciej Patro
